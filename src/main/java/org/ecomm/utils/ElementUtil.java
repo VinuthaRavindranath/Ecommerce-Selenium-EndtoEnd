@@ -47,6 +47,17 @@ public class ElementUtil {
         return text;
     }
 
+    public void doClearField(By locator) {
+        getElement(locator).clear();
+    }
+
+    public void clearAllFields(By locator) {
+        List<WebElement> elements=getElements(locator);
+        for (WebElement element : elements) {
+            element.clear();
+        }
+    }
+
     public List<String> getElementsAttributeValue(By locator, String attribute) {
         List<String> eleValues = new ArrayList<String>();
         List<WebElement> eleAttributeValues = getElements(locator);
