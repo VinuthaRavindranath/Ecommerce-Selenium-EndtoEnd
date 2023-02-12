@@ -1,8 +1,12 @@
 package org.ecomm.pages;
 
+import org.ecomm.pojo.BillingAddress;
 import org.ecomm.utils.ElementUtil;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+import java.util.List;
 
 public class CheckoutPage extends ElementUtil {
     WebDriver driver;
@@ -20,6 +24,8 @@ public class CheckoutPage extends ElementUtil {
     By postalCodeEle=By.id("billing_postcode");
     By emailEle=By.id("billing_email");
     By placeOrderButtonEle=By.id("place_order");
+
+    By billingAddressInputFields=By.cssSelector("div.woocommerce-billing-fields .input-text ");
 
 
     public String getCheckoutPageTitle(){
@@ -66,14 +72,19 @@ public class CheckoutPage extends ElementUtil {
         return this;
     }
 
-    public CheckoutPage enterBillingDetails(String firstName,String lastName,String address1,String address2,String city,String postalCode,String email){
-        setFirstName(firstName).
-                setLastName(lastName).
-                setAddress1(address1).
-                setAddress2(address2).
-                setCity(city).
-                setPostalCode(postalCode).
-                setEmail(email);
+    public CheckoutPage clearInputField(){
+        clearAllFields(billingAddressInputFields);
+        return this;
+    }
+
+    public CheckoutPage enterBillingDetails(BillingAddress billingAddress){
+        setFirstName(billingAddress.getFirstName()).
+                setLastName(billingAddress.getLastName()).
+                setAddress1(billingAddress.getAddressLineOne()).
+                setAddress2(billingAddress.getAddressLineTwo()).
+                setCity(billingAddress.getCity()).
+                setPostalCode(billingAddress.getPostalCode()).
+                setEmail(billingAddress.getEmail());
         return this;
     }
 }

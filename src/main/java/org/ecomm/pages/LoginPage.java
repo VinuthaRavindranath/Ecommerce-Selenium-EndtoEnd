@@ -1,5 +1,6 @@
 package org.ecomm.pages;
 
+import org.ecomm.pojo.User;
 import org.ecomm.utils.ElementUtil;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -7,15 +8,15 @@ import org.openqa.selenium.WebDriver;
 public class LoginPage extends ElementUtil {
     WebDriver driver;
 
-    public LoginPage( WebDriver driver) {
+    public LoginPage(WebDriver driver) {
         super(driver);
         this.driver = driver;
     }
 
     By loginOnCheckout = By.cssSelector(".showlogin");
     By usernameEle = By.id("username");
-    By passwordEle= By.id("password");
-    By loginButton =By.cssSelector("button[value='Login']");
+    By passwordEle = By.id("password");
+    By loginButton = By.cssSelector("button[value='Login']");
 
     public LoginPage clickLoginLinkOnCheckout() {
         doClick(loginOnCheckout);
@@ -23,8 +24,8 @@ public class LoginPage extends ElementUtil {
     }
 
     public LoginPage enterLoginCredentials(String username, String password) {
-        doSendKeys(usernameEle,username);
-        doSendKeys(passwordEle,password);
+        doSendKeys(usernameEle, username);
+        doSendKeys(passwordEle, password);
         return this;
     }
 
@@ -33,8 +34,8 @@ public class LoginPage extends ElementUtil {
         return this;
     }
 
-    public void doLoginOnCheckout(String username, String password) {
-                enterLoginCredentials(username,password).
+    public void doLoginOnCheckout(User user) {
+        enterLoginCredentials(user.getUsername(), user.getPassword()).
                 clickLoginButton();
     }
 

@@ -15,9 +15,14 @@ public class HomePage extends ElementUtil {
 
     private final By storeLink = By.linkText("Store");
 
+    public HomePage getUrl(){
+        BasePage basePage= new BasePage(driver);
+        basePage.loadUrl("/");
+        return this;
+    }
+
     public SearchPage clickOnStoreMenuLink() {
         doClick(storeLink);
         return new SearchPage(driver);
     }
-
 }
