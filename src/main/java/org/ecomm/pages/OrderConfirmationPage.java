@@ -11,9 +11,10 @@ public class OrderConfirmationPage extends ElementUtil {
         this.driver = driver;
     }
 
-    By OrderSuccessMessage= By.xpath("//p[contains(@class,'thankyou-order-received')]");
+    private final By OrderSuccessMessage= By.xpath("//p[contains(@class,'thankyou-order-received')]");
 
     public String getOrderConfirmationSuccessMessage(){
+        waitForElementVisible(OrderSuccessMessage,15);
         return doGetText(OrderSuccessMessage);
     }
 }

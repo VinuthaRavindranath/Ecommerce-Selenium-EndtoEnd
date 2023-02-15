@@ -3,21 +3,26 @@ package org.ecomm.pojo;
 public class BillingAddress {
     private String firstName;
     private String lastName;
+
+    private String country;
     private String addressLineOne;
     private String addressLineTwo;
     private String city;
+    private String state;
     private String postalCode;
     private String email;
 
     public BillingAddress() {
     }
 
-    public BillingAddress(String firstName, String lastName, String addressLineOne, String addressLineTwo, String city, String postalCode, String email) {
+    public BillingAddress(String firstName, String lastName, String country, String addressLineOne, String addressLineTwo, String city,String state, String postalCode, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.country = country;
         this.addressLineOne = addressLineOne;
         this.addressLineTwo = addressLineTwo;
         this.city = city;
+        this.state = state;
         this.postalCode = postalCode;
         this.email = email;
     }
@@ -37,6 +42,15 @@ public class BillingAddress {
 
     public BillingAddress setLastName(String lastName) {
         this.lastName = lastName;
+        return this;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public BillingAddress setCountry(String country) {
+        this.country = country;
         return this;
     }
 
@@ -64,6 +78,15 @@ public class BillingAddress {
 
     public BillingAddress setCity(String city) {
         this.city = city;
+        return this;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public BillingAddress setState(String state) {
+        this.state = state;
         return this;
     }
 

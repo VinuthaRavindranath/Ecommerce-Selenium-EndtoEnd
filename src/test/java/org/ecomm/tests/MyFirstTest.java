@@ -6,8 +6,6 @@ import org.ecomm.pojo.BillingAddress;
 import org.ecomm.pojo.Products;
 import org.ecomm.pojo.User;
 import org.ecomm.utils.JacksonUtils;
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -28,7 +26,6 @@ public class MyFirstTest extends BaseTest {
         Assert.assertEquals(searchPage.getSearchPageTitle(), "Search results: “"+searchTerm+"”");
 
         searchPage.addProductToCart(products.getName());
-        Thread.sleep(3000);
         CartPage cartPage = searchPage.clickViewCartLink();
         Assert.assertEquals(cartPage.getCartPageTitle(), "Cart");
         Assert.assertEquals(cartPage.getProductNameAddedInCart(), products.getName());
@@ -37,8 +34,8 @@ public class MyFirstTest extends BaseTest {
         Assert.assertEquals(checkoutPage.getCheckoutPageTitle(), "Checkout");
 
         checkoutPage.enterBillingDetails(billingAddress).
+                selectDirectBankTransfer().
                 clickOnPlaceOrderButton();
-        Thread.sleep(5000);
 
         OrderConfirmationPage orderConfirmationPage = new OrderConfirmationPage(driver);
         Assert.assertEquals(orderConfirmationPage.getOrderConfirmationSuccessMessage(), "Thank you. Your order has been received.");
@@ -57,7 +54,7 @@ public class MyFirstTest extends BaseTest {
         Assert.assertEquals(searchPage.getSearchPageTitle(), "Search results: “"+searchTerm+"”");
 
         searchPage.addProductToCart(products.getName());
-        Thread.sleep(3000);
+
         CartPage cartPage = searchPage.clickViewCartLink();
         Assert.assertEquals(cartPage.getCartPageTitle(), "Cart");
         Assert.assertEquals(cartPage.getProductNameAddedInCart(), products.getName());
@@ -69,14 +66,10 @@ public class MyFirstTest extends BaseTest {
 
         checkoutPage.
                 clearInputField().enterBillingDetails(billingAddress).
+                selectDirectBankTransfer().
                 clickOnPlaceOrderButton();
 
-        Thread.sleep(5000);
         OrderConfirmationPage orderConfirmationPage = new OrderConfirmationPage(driver);
         Assert.assertEquals(orderConfirmationPage.getOrderConfirmationSuccessMessage(), "Thank you. Your order has been received.");
-        Alert alert = driver.switchTo().alert();
-        alert.sendKeys("Naveen");
-        Thread.sleep(3000);
-        alert.accept();
     }
 }

@@ -15,17 +15,21 @@ public class CheckoutPage extends ElementUtil {
         this.driver = driver;
     }
 
-    By checkoutPageTitle=By.xpath("//h1[contains(@class,'has-text')]");
-    By firstNameEle=By.id("billing_first_name");
-    By lastNameEle=By.id("billing_last_name");
-    By address1Ele=By.id("billing_address_1");
-    By address2Ele=By.id("billing_address_2");
-    By cityEle=By.id("billing_city");
-    By postalCodeEle=By.id("billing_postcode");
-    By emailEle=By.id("billing_email");
-    By placeOrderButtonEle=By.id("place_order");
+    private final By checkoutPageTitle=By.xpath("//h1[contains(@class,'has-text')]");
+    private final By firstNameEle=By.id("billing_first_name");
+    private final By lastNameEle=By.id("billing_last_name");
+    private final By address1Ele=By.id("billing_address_1");
+    private final By address2Ele=By.id("billing_address_2");
+    private final By cityEle=By.id("billing_city");
+    private final By postalCodeEle=By.id("billing_postcode");
+    private final By emailEle=By.id("billing_email");
+    private final By placeOrderButtonEle=By.id("place_order");
+    private final By loaderElements =By.cssSelector(".blockUI blockOverlay");
+    private final By billingAddressInputFields=By.cssSelector("div.woocommerce-billing-fields .input-text ");
+    private final By countryDropDown=By.id("billing_country");
+    private final By stateDropDown=By.cssSelector("select#billing_state");
+    private final By directBankTransfer=By.id("payment_method_bacs");
 
-    By billingAddressInputFields=By.cssSelector("div.woocommerce-billing-fields .input-text ");
 
 
     public String getCheckoutPageTitle(){
@@ -68,6 +72,10 @@ public class CheckoutPage extends ElementUtil {
     }
 
     public CheckoutPage clickOnPlaceOrderButton(){
+        List<WebElement> loaders=getElements(loaderElements);
+        if (loaders.size()>0){
+            waitForElementsInVisible(loaders,15);
+        }
         doClick(placeOrderButtonEle);
         return this;
     }
@@ -80,11 +88,31 @@ public class CheckoutPage extends ElementUtil {
     public CheckoutPage enterBillingDetails(BillingAddress billingAddress){
         setFirstName(billingAddress.getFirstName()).
                 setLastName(billingAddress.getLastName()).
+                selectCountry(billingAddress.getCountry()).
                 setAddress1(billingAddress.getAddressLineOne()).
                 setAddress2(billingAddress.getAddressLineTwo()).
                 setCity(billingAddress.getCity()).
+                selectState(billingAddress.getState()).
                 setPostalCode(billingAddress.getPostalCode()).
                 setEmail(billingAddress.getEmail());
+        return this;
+    }
+
+    public CheckoutPage selectCountry(String countryName){
+        selectByVisibleText(countryDropDown,countryName);
+        return this;
+    }
+
+    public CheckoutPage selectState(String stateName){
+        selectByVisibleText(stateDropDown,stateName);
+        return this;
+    }
+
+    public CheckoutPage selectDirectBankTransfer(){
+        WebElement ele=waitForElementToBeClickable(directBankTransfer,15);
+        if (!ele.isSelected()){
+            ele.click();
+        }
         return this;
     }
 }

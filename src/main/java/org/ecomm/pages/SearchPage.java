@@ -58,6 +58,7 @@ public class SearchPage extends ElementUtil {
 
 
     public CartPage clickViewCartLink() {
+        waitForElementVisible(viewCartLink,10);
         doClick(viewCartLink);
         return new CartPage(driver);
 

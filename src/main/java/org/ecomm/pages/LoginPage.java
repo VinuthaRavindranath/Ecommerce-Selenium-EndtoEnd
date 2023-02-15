@@ -13,10 +13,10 @@ public class LoginPage extends ElementUtil {
         this.driver = driver;
     }
 
-    By loginOnCheckout = By.cssSelector(".showlogin");
-    By usernameEle = By.id("username");
-    By passwordEle = By.id("password");
-    By loginButton = By.cssSelector("button[value='Login']");
+    private final By loginOnCheckout = By.cssSelector(".showlogin");
+    private final By usernameEle = By.id("username");
+    private final By passwordEle = By.id("password");
+    private final By loginButton = By.cssSelector("button[value='Login']");
 
     public LoginPage clickLoginLinkOnCheckout() {
         doClick(loginOnCheckout);
@@ -24,6 +24,7 @@ public class LoginPage extends ElementUtil {
     }
 
     public LoginPage enterLoginCredentials(String username, String password) {
+        waitForElementVisible(usernameEle,15);
         doSendKeys(usernameEle, username);
         doSendKeys(passwordEle, password);
         return this;
