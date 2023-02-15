@@ -1,9 +1,11 @@
 {
   "firstName": "Vinutha",
   "lastName": "Ravindra",
+  "country": "India",
   "addressLineOne": "8th St",
   "addressLineTwo": "ABC building",
-  "city": "Dacono",
-  "postalCode": "80514",
+  "city": "Bangalore",
+  "state": "Karnataka",
+  "postalCode": "560077",
   "email": "vinuthatest27@gmail.com"
 }

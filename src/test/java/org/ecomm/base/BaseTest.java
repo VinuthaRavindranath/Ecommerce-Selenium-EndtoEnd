@@ -27,7 +27,6 @@ public class BaseTest {
                 System.out.println("Please provide a valid browser name");
                 break;
         }
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().window().maximize();
         return driver;
     }

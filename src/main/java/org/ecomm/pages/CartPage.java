@@ -12,9 +12,9 @@ public class CartPage extends ElementUtil {
         this.driver = driver;
     }
 
-    By cartPageTitle=By.xpath("//h1[contains(@class,'has-text')]");
-    By productNameInCart=By.cssSelector("td.product-name a");
-    By checkoutButton=By.linkText("PROCEED TO CHECKOUT");
+    private final By cartPageTitle=By.xpath("//h1[contains(@class,'has-text')]");
+    private final By productNameInCart=By.cssSelector("td.product-name a");
+    private final By checkoutButton=By.linkText("PROCEED TO CHECKOUT");
 
     public String getCartPageTitle(){
         return doGetText(cartPageTitle);
