@@ -1,0 +1,18 @@
+-------------------------------------------------------------------------------
+Test set: TestSuite
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 32.803 s <<< FAILURE! - in TestSuite
+guestCheckoutUsingDirectBankTransfer(org.ecomm.tests.MyFirstTest)  Time elapsed: 10.919 s  <<< FAILURE!
+org.openqa.selenium.StaleElementReferenceException: 
+stale element reference: element is not attached to the page document
+  (Session info: headless chrome=110.0.5481.100)
+For documentation on this error, please visit: https://selenium.dev/exceptions/#stale_element_reference
+Build info: version: '4.8.0', revision: '267030adea'
+System info: os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.16', java.version: '15.0.2'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [be125d8d966f4dc23cf3996438fa9a68, clickElement {id=2a27757f-ad18-4ce1-840d-0b3ff5c554f4}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 110.0.5481.100, chrome: {chromedriverVersion: 110.0.5481.77 (65ed616c6e8e..., userDataDir: /var/folders/8v/hj5vrxxx3rg...}, goog:chromeOptions: {debuggerAddress: localhost:61613}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: MAC, proxy: Proxy(), se:cdp: ws://localhost:61613/devtoo..., se:cdpVersion: 110.0.5481.100, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on MAC (be125d8d966f4dc23cf3996438fa9a68)] -> id: place_order]
+Session ID: be125d8d966f4dc23cf3996438fa9a68
+	at org.ecomm.tests.MyFirstTest.guestCheckoutUsingDirectBankTransfer(MyFirstTest.java:38)
+
