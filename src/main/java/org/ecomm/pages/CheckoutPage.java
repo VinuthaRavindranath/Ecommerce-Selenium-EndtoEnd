@@ -74,7 +74,7 @@ public class CheckoutPage extends ElementUtil {
     public CheckoutPage clickOnPlaceOrderButton(){
         List<WebElement> loaders=getElements(loaderElements);
         if (loaders.size()>0){
-            waitForElementsInVisible(loaders,15);
+            waitForElementsInVisible(loaders,30);
         }
         doClick(placeOrderButtonEle);
         return this;
