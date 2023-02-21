@@ -1,0 +1,10 @@
+
+f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Œ™àÝ
+O
+java:S1118
+":Add a private constructor to hide the implicit public one.(‹óÞC
+V	java:S125"<This block of commented-out lines of code should be removed.(ÅÌêŠÿÿÿÿÿ
+j
+java:S1128"ORemove this unused import 'com.fasterxml.jackson.core.JsonProcessingException'.(ßÔïÇûÿÿÿÿ
+U
+java:S1128":Remove this unused import 'org.ecomm.pojo.BillingAddress'.(ø‘˜þÿÿÿÿ

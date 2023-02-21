@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="5" preserve-order="true" name="test1">
+        <parameter name="browser" value="CHROME_HEADLESS"></parameter>
+        <classes>
+            <class name="org.ecomm.tests.MyFirstTest">
+                <methods>
+                    <include name="guestCheckoutUsingDirectBankTransfer"/>
+                    <include name="loginAndCheckoutUsingDirectBankTransfer"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

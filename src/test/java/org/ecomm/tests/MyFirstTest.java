@@ -7,6 +7,7 @@ import org.ecomm.pojo.Products;
 import org.ecomm.pojo.User;
 import org.ecomm.utils.JacksonUtils;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
@@ -14,6 +15,7 @@ import java.io.IOException;
 public class MyFirstTest extends BaseTest {
     public String searchTerm="Blue";
 
+    @DataProvider
     @Test
     public void guestCheckoutUsingDirectBankTransfer() throws InterruptedException, IOException {
         BillingAddress billingAddress = JacksonUtils.deserializeJson("myBillingAddress.json", BillingAddress.class);

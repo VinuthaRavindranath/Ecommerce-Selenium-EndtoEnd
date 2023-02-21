@@ -9,6 +9,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.safari.SafariDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Parameters;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -18,11 +19,11 @@ public class BaseTest {
     protected WebDriver driver;
 
 
-    public WebDriver openBrowser() throws IOException {
+    public WebDriver openBrowser(String browser) throws IOException {
         Properties prop = new Properties();
         FileInputStream fis = new FileInputStream(System.getProperty("user.dir") + "/src/test/resources/GlobalData.properties");
         prop.load(fis);
-        String browserName = System.getProperty("browser") != null ? System.getProperty("browser") : prop.getProperty("browser");
+        String browserName = System.getProperty("browser",browser) != null ? System.getProperty("browser",browser) : prop.getProperty("browser",browser);
 
         switch (DriverType.valueOf(browserName)) {
             case CHROME:
@@ -48,9 +49,10 @@ public class BaseTest {
         return driver;
     }
 
+    @Parameters("browser")
     @BeforeMethod
-    public WebDriver startDriver() throws IOException {
-        return driver = openBrowser();
+    public WebDriver startDriver(String browser) throws IOException {
+        return driver = openBrowser(browser);
     }
 
 
